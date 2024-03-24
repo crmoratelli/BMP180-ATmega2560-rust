@@ -90,7 +90,7 @@ fn read_temperature(i2c: &mut hal::I2c, cd: &CalibrationData) -> f32 {
 
 /* Reads the registers with pressure information in RAW format. */
 fn i2c_read_raw_pressure(i2c: &mut hal::I2c, oss: u32) -> i32 {
-    let mut data = [0; 3];
+    let mut data = [0; 2];
 
     let cmd = CMD_READ_PRESSURE_0 | ((oss as u8) << 6);
 
@@ -106,20 +106,12 @@ fn i2c_read_raw_pressure(i2c: &mut hal::I2c, oss: u32) -> i32 {
         }
     );
 
-    /* FIXME:   Read MSB_DATA and LSB_DATA at once. 
-                Do not try to read XLSB with MSB and LSB together.
-                It suports only 8 or 16 bits i2c transactions.     
-    */
     let _ = i2c.write_read(BMP180_ADDR, &[MSB_DATA], &mut data);
-    let msb = data[0];
-
-    let _ = i2c.write_read(BMP180_ADDR, &[LSB_DATA], &mut data);
-    let lsb = data[0];
+    let raw_pressure = (data[0] as i32) << 8 | data[1] as i32;
 
     let _ = i2c.write_read(BMP180_ADDR, &[XLSB_DATA], &mut data);
-    let xlsb = data[0];
-
-    let raw_pressure: u32 = ((msb as u32) << 16) | ((lsb as u32) << 8) | (xlsb as u32);
+    let raw_pressure = (raw_pressure << 8) | data[0] as i32;
+    
     (raw_pressure >> (8 - oss)) as i32
 }
 
