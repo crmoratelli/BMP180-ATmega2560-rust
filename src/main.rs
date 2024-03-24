@@ -142,7 +142,7 @@ fn i2c_read_pressure(i2c: &mut hal::I2c, oss: u32, cal: &CalibrationData) -> i32
     let x3 = ((x1 + x2) + 2) >> 2;
     let b4 = (cal.ac4 as u32) * (x3 + 32768) as u32 >> 15;
 
-    /* Cuidado: Essa operação resulta em um inteiro de 64 bits.  */
+    /* Caution! This operation results in a 64-bit integer. */
     let b7 = (up - b3) as u64 * (50000 as u64 >> oss);
     
     let p;
