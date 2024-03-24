@@ -1,4 +1,4 @@
-bmp180-final
+bmp180 driver
 ============
 
 Rust project for the _Arduino Mega 2560_.
@@ -8,11 +8,13 @@ Rust project for the _Arduino Mega 2560_.
 
 2. Run `cargo build` to build the firmware.
 
-3. Run `cargo run` to flash the firmware to a connected board.  If `ravedude`
+3. Run `cargo run --release` to flash the firmware to a connected board.  If `ravedude`
    fails to detect your board, check its documentation at
    <https://crates.io/crates/ravedude>.
 
-4. `ravedude` will open a console session after flashing where you can interact
+   Debug elf is not running, maybe some problem with the HAL. 
+
+5. `ravedude` will open a console session after flashing where you can interact
    with the UART console of your board.
 
 [`avr-hal` README]: https://github.com/Rahix/avr-hal#readme
