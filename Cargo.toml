@@ -15,6 +15,7 @@ panic-halt = "0.2.0"
 ufmt = "0.2.0"
 nb = "0.1.2"
 ufmt_float = "0.2.0"
+embedded-hal = "0.2.7"
 
 [dependencies.arduino-hal]
 git = "https://github.com/rahix/avr-hal"
