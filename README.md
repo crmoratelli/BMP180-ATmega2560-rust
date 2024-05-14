@@ -20,6 +20,18 @@ Rust project for the _Arduino Mega 2560_.
 [`avr-hal` README]: https://github.com/Rahix/avr-hal#readme
 [`ravedude`]: https://crates.io/crates/ravedude
 
+## Useful instalation commands
+
+```
+cargo install ravedude
+cargo install cargo-generate
+cargo update
+sudo apt install rustup
+rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+export RAVEDUDE_PORT=/dev/ttyUSB0
+cargo run --release
+````
+
 ## License
 Licensed under either of
 
