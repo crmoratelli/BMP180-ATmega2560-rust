@@ -1,9 +1,12 @@
+cargo-features = ["profile-rustflags"]
+
 [package]
 name = "bmp180-final"
 version = "0.1.0"
 authors = ["Moratelli <crmoratelli@gmail.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
+
 
 [[bin]]
 name = "bmp180-final"
@@ -35,6 +38,7 @@ codegen-units = 1
 debug = true
 lto = true
 opt-level = "s"
+rustflags = ["-C", "link-arg=-Wl,--allow-multiple-definition"]
 
 [profile.dev.package.compiler_builtins]
 overflow-checks = false
