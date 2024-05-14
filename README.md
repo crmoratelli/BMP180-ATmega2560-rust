@@ -20,7 +20,7 @@ Rust project for the _Arduino Mega 2560_.
 [`avr-hal` README]: https://github.com/Rahix/avr-hal#readme
 [`ravedude`]: https://crates.io/crates/ravedude
 
-## Useful instalation commands
+## Useful Install Commands
 
 ```
 cargo install ravedude
