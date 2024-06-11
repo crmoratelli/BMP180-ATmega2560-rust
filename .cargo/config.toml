@@ -6,3 +6,5 @@ runner = "ravedude mega2560 -cb 57600"
 
 [unstable]
 build-std = ["core"]
+
+rustflags = ["-C", "link-arg=-Wl,--allow-multiple-definition"]
